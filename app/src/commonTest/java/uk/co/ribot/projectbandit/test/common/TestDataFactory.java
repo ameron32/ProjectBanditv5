@@ -49,4 +49,16 @@ public class TestDataFactory {
         return name;
     }
 
+    public static List<String> makeListUsernames(int number) {
+        List<String> usernames = new ArrayList<>();
+        for (int i = 0; i < number; i++) {
+            usernames.add(makeUsername());
+        }
+        return usernames;
+    }
+
+    public static String makeUsername() {
+        return randomUuid();
+    }
+
 }

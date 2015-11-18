@@ -1,11 +1,11 @@
 package uk.co.ribot.projectbandit.data.local;
 
+import com.squareup.sqlbrite.BriteDatabase;
+import com.squareup.sqlbrite.SqlBrite;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
-import com.squareup.sqlbrite.BriteDatabase;
-import com.squareup.sqlbrite.SqlBrite;
 
 import java.util.Collection;
 import java.util.List;
@@ -61,7 +61,9 @@ public class DatabaseHelper {
                         long result = mDb.insert(Db.RibotProfileTable.TABLE_NAME,
                                 Db.RibotProfileTable.toContentValues(ribot.profile),
                                 SQLiteDatabase.CONFLICT_REPLACE);
-                        if (result >= 0) subscriber.onNext(ribot);
+                        if (result >= 0) {
+                            subscriber.onNext(ribot);
+                        }
                     }
                     transaction.markSuccessful();
                     subscriber.onCompleted();
@@ -81,6 +83,11 @@ public class DatabaseHelper {
                         return new Ribot(Db.RibotProfileTable.parseCursor(cursor));
                     }
                 });
+    }
+
+    public Observable<String> getUsername() {
+        // TODO correctly implement username
+        return Observable.just("username");
     }
 
 }

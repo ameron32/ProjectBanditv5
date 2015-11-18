@@ -1,8 +1,8 @@
 package uk.co.ribot.projectbandit.data;
 
-import android.content.Context;
-
 import com.squareup.otto.Bus;
+
+import android.content.Context;
 
 import java.util.List;
 
@@ -20,10 +20,14 @@ import uk.co.ribot.projectbandit.injection.module.DataManagerModule;
 
 public class DataManager {
 
-    @Inject protected RibotsService mRibotsService;
-    @Inject protected DatabaseHelper mDatabaseHelper;
-    @Inject protected PreferencesHelper mPreferencesHelper;
-    @Inject protected Bus mBus;
+    @Inject
+    protected RibotsService mRibotsService;
+    @Inject
+    protected DatabaseHelper mDatabaseHelper;
+    @Inject
+    protected PreferencesHelper mPreferencesHelper;
+    @Inject
+    protected Bus mBus;
 
     public DataManager(Context context) {
         injectDependencies(context);
@@ -55,4 +59,7 @@ public class DataManager {
         return mDatabaseHelper.getRibots().distinct();
     }
 
+    public Observable<String> getUsername() {
+        return mDatabaseHelper.getUsername();
+    }
 }

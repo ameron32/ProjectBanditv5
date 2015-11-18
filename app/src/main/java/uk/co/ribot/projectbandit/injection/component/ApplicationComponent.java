@@ -12,6 +12,7 @@ import uk.co.ribot.projectbandit.data.SyncService;
 import uk.co.ribot.projectbandit.injection.module.ApplicationModule;
 import uk.co.ribot.projectbandit.injection.module.DefaultSchedulersModule;
 import uk.co.ribot.projectbandit.ui.main.MainPresenter;
+import uk.co.ribot.projectbandit.ui.signin.SignInPresenter;
 import uk.co.ribot.projectbandit.util.SchedulerApplier;
 
 @Singleton
@@ -21,6 +22,7 @@ public interface ApplicationComponent {
     void inject(SyncService syncService);
     void inject(SchedulerApplier.DefaultSchedulers defaultSchedulers);
     void inject(MainPresenter mainPresenter);
+    void inject(SignInPresenter signInPresenter);
 
     Application application();
     DataManager dataManager();
